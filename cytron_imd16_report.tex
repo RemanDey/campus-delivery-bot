@@ -3,6 +3,7 @@
 %  & All-Terrain Campus Delivery AMR
 %  Tech Lead Candidate Portfolio Submission — June 2026
 % ============================================================
+%! TEX root = iit_mandi_evaluation.tex
 \documentclass[12pt,a4paper]{article}
 
 % --- Packages ---
@@ -31,18 +32,17 @@
     urlcolor=blue!60!black,
     citecolor=blue!60!black,
     pdftitle={Technical Evaluation Brief: Cytron iMD16},
-    pdfauthor={Tech Lead Candidate},
+    pdfauthor={Reman Dey},
     pdfsubject={Motor Driver Evaluation and AMR Project Proposal},
 }
 
 % --- Colour Palette ---
-\definecolor{iitmBlue}{RGB}{0, 60, 113}
-\definecolor{iitmGold}{RGB}{180, 130, 0}
-\definecolor{codeGray}{RGB}{245, 245, 245}
-\definecolor{codeComment}{RGB}{0, 128, 0}
-\definecolor{codeKeyword}{RGB}{0, 0, 200}
-\definecolor{ruleBlue}{RGB}{0, 60, 113}
-
+\definecolor{iitmBlue}{RGB}{18, 18, 18}       % Pure Ink Text
+\definecolor{iitmGold}{RGB}{198, 15, 51}      % Crimson Ruby (Replaced Gold!)
+\definecolor{codeGray}{RGB}{252, 252, 250}     % Clean Chalk Background
+\definecolor{codeComment}{RGB}{130, 130, 130}  % Neutral Gray Comments
+\definecolor{codeKeyword}{RGB}{12, 120, 80}    % Dark Emerald Keywords
+\definecolor{ruleBlue}{RGB}{50, 50, 50}        % Slate Borders
 % --- Section Formatting ---
 \titleformat{\section}
   {\color{iitmBlue}\large\bfseries}
@@ -84,7 +84,7 @@
 % --- Header / Footer ---
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[L]{\small\textcolor{iitmBlue}{\textbf{Cytron iMD16 Evaluation \& Project Husky-Mandi AMR}}}
+\fancyhead[L]{\small\textcolor{iitmBlue}{\textbf{Cytron iMD16 Evaluation \& AMR}}}
 \fancyhead[R]{\small\textcolor{iitmGold}{\textbf{IIT Mandi — June 2026}}}
 \fancyfoot[C]{\small\thepage}
 \renewcommand{\headrulewidth}{0.6pt}
@@ -110,35 +110,29 @@
     {\color{iitmBlue}\rule{\linewidth}{0.5pt}}\\[1.2cm]
 
     {\Huge\bfseries\color{iitmBlue}
-        Technical Evaluation Brief:\\[0.4em]
         Cytron iMD16 Driver Analysis\\[0.3em]
         \& All-Terrain Campus Delivery AMR
     }\\[0.8cm]
 
     {\color{iitmGold}\rule{0.6\linewidth}{1pt}}\\[0.6cm]
 
-    {\Large\itshape\color{gray}
-        Tech Lead Candidate Portfolio Submission
-    }\\[0.4cm]
+
 
     {\normalsize
-        Prepared for consideration at the\\[0.2em]
+        \textbf{\color{iitmBlue}Reman Dey}\\[0.2em]
         \textbf{\color{iitmBlue}Indian Institute of Technology Mandi}\\[0.2em]
-        Centre for AI and Robotics (CAIR) $\cdot$
-        Smart Campus \& Emerging Electronics (SCEE)\\[0.2em]
-        iHub for Human-Computer Interaction (HCI iHub)
-    }\\[1.2cm]
+        
+    }
 
     {\color{iitmGold}\rule{0.4\linewidth}{0.5pt}}\\[0.6cm]
 
     {\large\bfseries June 2026}\\[1.5cm]
 
     \begin{tabular}{ll}
-        \textbf{Document Type:}   & Technical Evaluation \& Project Proposal Report \\[4pt]
-        \textbf{Classification:}  & Open / Portfolio Submission \\[4pt]
+        \textbf{Document Type:}   & Technical Evaluation \\[4pt]
         \textbf{Hardware Focus:}  & Cytron iMD16 Dual-Channel Motor Driver \\[4pt]
-        \textbf{Project Scope:}   & Project Husky-Mandi: Autonomous Campus Delivery AMR \\[4pt]
-        \textbf{Ecosystem Focus:} & IIT Mandi (SCEE / CAIR) \\
+        \textbf{Project:}   & Autonomous Campus Delivery AMR \\[4pt]
+        \textbf{Ecosystem Focus:} & IIT Mandi Campus  \\
     \end{tabular}
 
     \vfill
@@ -158,8 +152,8 @@
 % ============================================================
 \section{Executive Summary}
 
-This report constitutes a complete engineering portfolio submission for the Tech Lead position
-within the IIT Mandi robotics ecosystem. It is structured in two interdependent parts.
+This report constitutes a complete engineering submission for the Tech Lead position
+for Robotronics Club IIT Mandi . It is structured in two interdependent parts.
 
 \textbf{Part I — Hardware Evaluation:} A rigorous electromechanical analysis of the Cytron iMD16
 dual-channel brushed DC motor driver is presented, including mathematical modelling of the DC
@@ -167,7 +161,7 @@ motor plant, spectral and current specifications, a competitive technology revie
 mathematically-grounded power-scaling boundary analysis that delineates the driver's applicability
 domain from passenger electric vehicles to campus-scale autonomous mobile robots (AMRs).
 
-\textbf{Part II — Project Proposal:} \textit{Project Husky-Mandi} is proposed as a
+\textbf{Part II — Project Proposal:} \textit{Project Husky-Mandi}(with the name husky inspired by the clearpath robotics husky rover) is proposed as a
 competition-ready, high-torque, skid-steer AMR designed specifically for the steep gradients
 and satellite-occluded mountainous terrain of IIT Mandi's campus. The system architecture
 integrates ROS\,2 Humble, NVIDIA Jetson Orin Nano, OAK-D Pro depth camera with
