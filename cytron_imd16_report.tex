@@ -1,8 +1,12 @@
 % ============================================================
 %  Technical Evaluation Brief: Cytron iMD16 Driver Analysis
 %  & All-Terrain Campus Delivery AMR
-%  Tech Lead Candidate Portfolio Submission — June 2026
+%  First-Year Student Project Proposal — June 2026
 % ============================================================
+%  Author: First-Year Student, Engineering Physics Program
+%  Advisor: Robotronics Club, IIT Mandi
+% ============================================================
+
 %! TEX root = iit_mandi_evaluation.tex
 \documentclass[12pt,a4paper]{article}
 
@@ -120,8 +124,8 @@
 
     {\normalsize
         \textbf{\color{iitmBlue}Reman Dey}\\[0.2em]
+        \textbf{\color{iitmBlue}First-Year, Engineering Physics}\\[0.2em]
         \textbf{\color{iitmBlue}Indian Institute of Technology Mandi}\\[0.2em]
-        
     }
 
     {\color{iitmGold}\rule{0.4\linewidth}{0.5pt}}\\[0.6cm]
@@ -129,10 +133,11 @@
     {\large\bfseries June 2026}\\[1.5cm]
 
     \begin{tabular}{ll}
-        \textbf{Document Type:}   & Technical Evaluation \\[4pt]
+        \textbf{Document Type:}   & Student Project Proposal \\
         \textbf{Hardware Focus:}  & Cytron iMD16 Dual-Channel Motor Driver \\[4pt]
         \textbf{Project:}   & Autonomous Campus Delivery AMR \\[4pt]
-        \textbf{Ecosystem Focus:} & IIT Mandi Campus  \\
+        \textbf{Advisor:}         & Robotronics Club \\
+        \textbf{Campus:}          & IIT Mandi, Himachal Pradesh  \\
     \end{tabular}
 
     \vfill
@@ -152,8 +157,11 @@
 % ============================================================
 \section{Executive Summary}
 
-This report constitutes a complete engineering submission for the Tech Lead position
-for Robotronics Club IIT Mandi . It is structured in two interdependent parts.
+This report constitutes a project proposal submission for an autonomous mobile robot (AMR) designed
+to perform campus parcel delivery at IIT Mandi. As a first-year student in the Engineering Physics
+program, I have undertaken this project under the mentorship of the Robotronics Club to develop
+a deeper understanding of motor control, sensor fusion, and autonomous systems integration.
+The proposal is structured in two interdependent parts:
 
 \textbf{Part I — Hardware Evaluation:} A rigorous electromechanical analysis of the Cytron iMD16
 dual-channel brushed DC motor driver is presented, including mathematical modelling of the DC
@@ -342,7 +350,7 @@ Unlike the majority of comparably-priced brushed DC motor drivers that ship as o
 machined aluminium extrusion that simultaneously provides structural rigidity, EMI shielding,
 and passive heat-sinking to the enclosure surface. This is non-trivial in field robotic
 applications where vibration, humidity, and conductive particulates (such as the fine dust and
-moisture prevalent in the Himalayan foothills surrounding IIT Mandi) would rapidly degrade
+moisture prevalent in the Himalayan foothills, along with unprecedented rainfall surrounding IIT Mandi) would rapidly degrade
 exposed PCB traces and power MOSFETs.
 
 \subsubsection{High-Voltage Logic Tolerance (3\,V -- 30\,V)}
@@ -358,8 +366,7 @@ require additional optocoupler stages for 24\,V PLC compatibility.
 An onboard PWM signal generator — adjustable via a physical potentiometer — permits motor
 speed control without any external controller. This provides a meaningful advantage in lab
 bench characterisation, dyno testing of motors, and fail-safe manual override operation during
-field deployment, all without requiring a connected microcontroller or ROS stack.
-
+field deployment, all without requiring a connected microcontroller.
 \subsection{Configurability Limits}
 
 \subsubsection{Hardware-Only Configuration (No Firmware Interface)}
