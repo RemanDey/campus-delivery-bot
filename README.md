@@ -11,7 +11,7 @@ Robotronics Club already has or that are cheap to buy. This is a first-year v1 b
 — the goal is to get something that actually moves and follows ArUco markers, not to
 build a perfect system.
 
-Full write-up is in `iit_mandi_evaluation.pdf` / `iit_mandi_evaluation.tex`.
+Full write-up is in `rover.pdf` / `iit_mandi_evaluation.tex`.
 
 ---
 
