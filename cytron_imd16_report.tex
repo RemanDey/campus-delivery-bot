@@ -1,16 +1,13 @@
 % ============================================================
-%  Technical Evaluation Brief: Cytron iMD16 Driver Analysis
-%  & All-Terrain Campus Delivery AMR
-%  First-Year Student Project Proposal — June 2026
+%  Cytron iMD16 Driver Notes + Cheap Campus Delivery Robot Idea
+%  First-Year Student Project Proposal -- June 2026
 % ============================================================
-%  Author: First-Year Student, Engineering Physics Program
-%  Advisor: Robotronics Club, IIT Mandi
+%  Author:REMAN DEY
+%  Advisor: OHfohefhoawuefhoaewhro  ONLYYY MEEEE
 % ============================================================
 
-%! TEX root = iit_mandi_evaluation.tex
 \documentclass[12pt,a4paper]{article}
 
-% --- Packages ---
 \usepackage[a4paper, top=1in, bottom=1in, left=1in, right=1in]{geometry}
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -20,34 +17,30 @@
 \usepackage{hyperref}
 \usepackage{titlesec}
 \usepackage{parskip}
-\usepackage{microtype}
 \usepackage{array}
 \usepackage{longtable}
 \usepackage{graphicx}
 \usepackage{fancyhdr}
-\usepackage{setspace}
 \usepackage{enumitem}
 \usepackage{caption}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning, shapes.geometric}
 
-% --- Hyperref Setup ---
 \hypersetup{
     colorlinks=true,
     linkcolor=blue!60!black,
     urlcolor=blue!60!black,
     citecolor=blue!60!black,
-    pdftitle={Technical Evaluation Brief: Cytron iMD16},
+    pdftitle={Cytron iMD16 Notes and Cheap Campus Delivery Robot},
     pdfauthor={Reman Dey},
-    pdfsubject={Motor Driver Evaluation and AMR Project Proposal},
 }
 
-% --- Colour Palette ---
-\definecolor{iitmBlue}{RGB}{18, 18, 18}       % Pure Ink Text
-\definecolor{iitmGold}{RGB}{198, 15, 51}      % Crimson Ruby (Replaced Gold!)
-\definecolor{codeGray}{RGB}{252, 252, 250}     % Clean Chalk Background
-\definecolor{codeComment}{RGB}{130, 130, 130}  % Neutral Gray Comments
-\definecolor{codeKeyword}{RGB}{12, 120, 80}    % Dark Emerald Keywords
-\definecolor{ruleBlue}{RGB}{50, 50, 50}        % Slate Borders
-% --- Section Formatting ---
+\definecolor{iitmBlue}{RGB}{18, 18, 18}
+\definecolor{iitmGold}{RGB}{198, 15, 51}
+\definecolor{codeGray}{RGB}{252, 252, 250}
+\definecolor{codeComment}{RGB}{130, 130, 130}
+\definecolor{codeKeyword}{RGB}{12, 120, 80}
+
 \titleformat{\section}
   {\color{iitmBlue}\large\bfseries}
   {\thesection}{1em}{}[\color{iitmBlue}\titlerule]
@@ -63,7 +56,6 @@
 \titlespacing*{\section}{0pt}{18pt}{8pt}
 \titlespacing*{\subsection}{0pt}{12pt}{4pt}
 
-% --- Listings Style ---
 \lstdefinestyle{techstyle}{
     backgroundcolor=\color{codeGray},
     commentstyle=\color{codeComment}\itshape,
@@ -85,23 +77,19 @@
 }
 \lstset{style=techstyle}
 
-% --- Header / Footer ---
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[L]{\small\textcolor{iitmBlue}{\textbf{Cytron iMD16 Evaluation \& AMR}}}
-\fancyhead[R]{\small\textcolor{iitmGold}{\textbf{IIT Mandi — June 2026}}}
+\fancyhead[L]{\small\textcolor{iitmBlue}{\textbf{iMD16 Notes + Delivery Bot Idea}}}
+\fancyhead[R]{\small\textcolor{iitmGold}{\textbf{Reman Dey}}}
 \fancyfoot[C]{\small\thepage}
 \renewcommand{\headrulewidth}{0.6pt}
 \renewcommand{\headrule}{\color{iitmBlue}\hrule width\headwidth height\headrulewidth}
 
-% --- Utility Commands ---
-\newcommand{\param}[1]{\ensuremath{#1}}
 \newcommand{\unitfmt}[1]{\ensuremath{\,\mathrm{#1}}}
-\newcommand{\highlight}[1]{\colorbox{iitmGold!20}{\textbf{#1}}}
+
 \setlength{\headheight}{14.2pt}
 \addtolength{\topmargin}{-2.2pt}
 
-% ============================================================
 \begin{document}
 
 % ============================================================
@@ -114,13 +102,11 @@
     {\color{iitmBlue}\rule{\linewidth}{0.5pt}}\\[1.2cm]
 
     {\Huge\bfseries\color{iitmBlue}
-        Cytron iMD16 Driver Analysis\\[0.3em]
-        \& All-Terrain Campus Delivery AMR
+        Cytron iMD16 Notes\\[0.3em]
+        and a Cheap Campus Delivery Robot Idea
     }\\[0.8cm]
 
     {\color{iitmGold}\rule{0.6\linewidth}{1pt}}\\[0.6cm]
-
-
 
     {\normalsize
         \textbf{\color{iitmBlue}Reman Dey}\\[0.2em]
@@ -133,10 +119,10 @@
     {\large\bfseries June 2026}\\[1.5cm]
 
     \begin{tabular}{ll}
-        \textbf{Document Type:}   & Student Project Proposal \\
-        \textbf{Hardware Focus:}  & Cytron iMD16 Dual-Channel Motor Driver \\[4pt]
-        \textbf{Project:}   & Autonomous Campus Delivery AMR \\[4pt]
-        \textbf{Advisor:}         & Robotronics Club \\
+        \textbf{Document Type:}   & Project Proposal (Club Submission) \\
+        \textbf{Hardware Focus:}  & Cytron iMD16 Motor Driver \\[4pt]
+        \textbf{Project:}   & Low-Cost Campus Delivery Robot/Campus Cleaner \\[4pt]
+        \textbf{Advisor:}         & AeroXMD \\
         \textbf{Campus:}          & IIT Mandi, Himachal Pradesh  \\
     \end{tabular}
 
@@ -153,753 +139,522 @@
 \newpage
 
 % ============================================================
-%  SECTION 1: EXECUTIVE SUMMARY
+%  SECTION 1: INTRO
 % ============================================================
-\section{Executive Summary}
+\section{Why I'm Writing This}
 
-This report constitutes a project proposal submission for an autonomous mobile robot (AMR) designed
-to perform campus parcel delivery at IIT Mandi. As a first-year student in the Engineering Physics
-program, I have undertaken this project under the mentorship of the Robotronics Club to develop
-a deeper understanding of motor control, sensor fusion, and autonomous systems integration.
-The proposal is structured in two interdependent parts:
+This is my project proposal for the Robotronics Club. I'm  just a first-year so I don't have a
+huge budget or a lot of hands-on experience yet, so I picked something I think I can actually
+build this semester.
 
-\textbf{Part I — Hardware Evaluation:} A rigorous electromechanical analysis of the Cytron iMD16
-dual-channel brushed DC motor driver is presented, including mathematical modelling of the DC
-motor plant, spectral and current specifications, a competitive technology review, and a
-mathematically-grounded power-scaling boundary analysis that delineates the driver's applicability
-domain from passenger electric vehicles to campus-scale autonomous mobile robots (AMRs).
+The report has two parts. First I go through the Cytron iMD16 motor driver in some detail
+because that's the one part of the system I'm most confident about and it's the part I had
+to actually understand the math for. Second, I sketch out a small delivery-/cleaning robot idea that
+uses this driver, but built around parts that are actually affordable for a student club,
+not industrial-grade sensors.
 
-\textbf{Part II — Project Proposal:} \textit{Project Husky-Mandi}(with the name husky inspired by the clearpath robotics husky rover) is proposed as a
-competition-ready, high-torque, skid-steer AMR designed specifically for the steep gradients
-and satellite-occluded mountainous terrain of IIT Mandi's campus. The system architecture
-integrates ROS\,2 Humble, NVIDIA Jetson Orin Nano, OAK-D Pro depth camera with
-hardware-accelerated YOLOv8 segmentation, u-blox ZED-F9P multi-band GNSS, and an Extended
-Kalman Filter (EKF) sensor fusion stack that demonstrably overcomes Himalayan GPS occlusion.
+I want to be upfront that this is a scaled-down, "let's get something working" proposal,
 
-The iMD16 is rationally positioned within this proposal as the left/right bank motor drive
-authority for a 4-wheel brushed planetary-geared configuration, operated at 24\,V with up to
-30\,A peak current during steep incline transitions.
+not a finished engineering design. Things like exact battery sizing, the camera FOV, and
+the final BOM will probably change once I start testing.
 
 % ============================================================
-%  SECTION 2: ELECTROMECHANICAL MATHEMATICAL MODELLING
+%  SECTION 2: MOTOR MATH
 % ============================================================
-\section{Electromechanical Mathematical Modelling of DC Motors}
+\section{Some Basic Motor Math}
 
-\subsection{System Formulation}
+Before picking a driver I wanted to actually understand what a DC motor driver is doing,
+not just treat it as a black box, so here's the model I worked through.
 
-A permanent-magnet DC (PMDC) motor is a coupled electromechanical system governed by two
-physical domains: an electrical circuit (armature) and a rotating mechanical load. The
-standard lumped-parameter model treats the armature inductance $L$, resistance $R$, and
-back-EMF $e_b(t)$ as the principal electrical elements, while the motor shaft is characterised
-by its moment of inertia $J$, viscous damping coefficient $B$, and an external load torque
-$T_L(t)$.
+\subsection{The Two Equations}
 
-\subsection{Electrical Subsystem — Kirchhoff's Voltage Law}
+A brushed DC motor is basically an electrical circuit (the coil) connected to a spinning
+mechanical part (the shaft + whatever load is on it). You get one equation from circuit
+theory and one from rotational mechanics.
 
-Applying KVL around the armature loop:
+\textbf{Electrical side (Kirchhoff's voltage law around the motor coil):}
 
 \begin{equation}
-    \boxed{V(t) = R\,i(t) + L\,\frac{di(t)}{dt} + e_b(t)}
+    V(t) = R\,i(t) + L\,\frac{di(t)}{dt} + e_b(t)
     \label{eq:kvl}
 \end{equation}
 
-\noindent where:
-\begin{itemize}[nosep]
-    \item $V(t)$ — terminal voltage applied by the driver \unitfmt{[V]}
-    \item $R$ — armature winding resistance \unitfmt{[\Omega]}
-    \item $L$ — armature winding inductance \unitfmt{[H]}
-    \item $i(t)$ — instantaneous armature current \unitfmt{[A]}
-    \item $e_b(t)$ — back-electromotive force (counter-EMF) \unitfmt{[V]}
-\end{itemize}
+where $V$ is the voltage the driver applies, $R$ is the coil resistance, $L$ is the coil
+inductance, $i$ is the current, and $e_b$ is the back-EMF (the voltage the spinning motor
+generates on its own, opposing the current).
 
-\subsection{Mechanical Subsystem — Newton's Second Law for Rotation}
-
-Applying Newton's second law to the rotating shaft:
+\textbf{Mechanical side (Newton's second law for rotation):}
 
 \begin{equation}
-    \boxed{T_m(t) = J\,\frac{d\omega(t)}{dt} + B\,\omega(t) + T_L(t)}
+    T_m(t) = J\,\frac{d\omega(t)}{dt} + B\,\omega(t) + T_L(t)
     \label{eq:newton}
 \end{equation}
 
-\noindent where:
-\begin{itemize}[nosep]
-    \item $T_m(t)$ — electromagnetic torque produced by the motor \unitfmt{[N{\cdot}m]}
-    \item $J$ — rotational inertia of the motor shaft and load \unitfmt{[kg{\cdot}m^2]}
-    \item $\omega(t)$ — angular velocity of the shaft \unitfmt{[rad/s]}
-    \item $B$ — viscous friction coefficient \unitfmt{[N{\cdot}m{\cdot}s/rad]}
-    \item $T_L(t)$ — external load torque (gravity, friction) \unitfmt{[N{\cdot}m]}
-\end{itemize}
+where $T_m$ is the torque the motor produces, $J$ is the rotational inertia, $\omega$ is
+the angular speed, $B$ is friction, and $T_L$ is whatever load torque is fighting the motor
+(gravity on a slope, friction, etc).
 
-\subsection{Electromechanical Coupling Constants}
+\subsection{Connecting Them}
 
-The electromagnetic torque and back-EMF are related to armature current and shaft speed through
-the motor coupling constants:
+Torque and back-EMF are both tied to a single motor constant $K$:
 
 \begin{align}
-    T_m(t) &= K_t \cdot i(t) \label{eq:torque_coupling}\\
-    e_b(t) &= K_e \cdot \omega(t) \label{eq:back_emf}
+    T_m(t) &= K \cdot i(t) \\
+    e_b(t) &= K \cdot \omega(t)
 \end{align}
 
-\noindent In SI units, thermodynamic consistency requires $K_t = K_e = K$ (both expressed
-in \unitfmt{[V{\cdot}s/rad]} or equivalently \unitfmt{[N{\cdot}m/A]}). This identity simplifies
-the coupled system analysis significantly.
+\subsection{What Happens at Steady State}
 
-\subsection{Steady-State Torque–Speed Characteristic}
-
-At steady-state, all time-derivative terms vanish:
-\[
-    \frac{di}{dt} = 0, \qquad \frac{d\omega}{dt} = 0
-\]
-
-\noindent \textbf{Step 1 — Solve for current from Eq.~\eqref{eq:kvl}:}
+If you let the motor settle (no more change in current or speed), the derivative terms
+drop out and you can solve for current from Eq.~\eqref{eq:kvl}:
 
 \begin{equation}
-    V = R\,i_{ss} + K\,\omega \implies i_{ss} = \frac{V - K\,\omega}{R}
-    \label{eq:ss_current}
+    i_{ss} = \frac{V - K\,\omega}{R}
 \end{equation}
 
-\noindent \textbf{Step 2 — Substitute into torque relation Eq.~\eqref{eq:torque_coupling}:}
+Plug that into the torque equation and you get the torque--speed line for the motor:
 
 \begin{equation}
-    T_m = K \cdot i_{ss} = K \cdot \frac{V - K\,\omega}{R}
-\end{equation}
-
-\noindent \textbf{Step 3 — Expand and collect terms:}
-
-\begin{equation}
-    \boxed{T_m(\omega) = \frac{K}{R}\,V - \frac{K^2}{R}\,\omega}
+    T_m(\omega) = \frac{K}{R}\,V - \frac{K^2}{R}\,\omega
     \label{eq:tm_omega}
 \end{equation}
 
-This is the fundamental \textbf{linear torque--speed characteristic} of a PMDC motor. The slope
-$-K^2/R$ is always negative, confirming that torque decreases linearly as speed increases — a
-direct result of the back-EMF opposing the armature current.
+This is the one equation I actually care about, because it tells you the motor's torque
+goes down linearly as speed goes up -- which makes sense, since a faster-spinning motor
+generates more back-EMF, which fights the current, which lowers torque.
 
-\subsection{Stall Torque and No-Load Speed}
-
-From Eq.~\eqref{eq:tm_omega}, two canonical operating points are defined:
-
-\subsubsection{Stall Torque ($\omega = 0$, maximum torque)}
-\begin{equation}
-    T_\text{stall} = \frac{K}{R}\,V
-    \label{eq:stall}
-\end{equation}
-
-This is the torque produced at zero speed (e.g., the moment of motor start or locked shaft).
-It represents the maximum torque output and corresponds to maximum armature current
-$i_\text{stall} = V/R$.
-
-\subsubsection{No-Load Speed ($T_m = 0$, maximum speed)}
-Setting $T_m = 0$ in Eq.~\eqref{eq:tm_omega}:
-\begin{equation}
-    0 = \frac{K}{R}\,V - \frac{K^2}{R}\,\omega_0 \implies \omega_0 = \frac{V}{K}
-    \label{eq:no_load}
-\end{equation}
-
-This is the theoretical maximum shaft speed when no load opposes the motor. The full
-characteristic can therefore be written compactly as:
+Two useful numbers come out of this:
 
 \begin{equation}
-    T_m(\omega) = T_\text{stall}\!\left(1 - \frac{\omega}{\omega_0}\right)
-    \label{eq:compact}
+    T_\text{stall} = \frac{K}{R}\,V \quad \text{(torque at zero speed, max current)}
 \end{equation}
 
-\noindent \textbf{Engineering implication for the iMD16 integration:} The duty-cycle of the
-PWM signal sets the effective $V$ applied to the motor. By modulating duty cycle, the entire
-torque--speed curve translates vertically, providing proportional velocity control of the AMR
-drive wheels.
+\begin{equation}
+    \omega_0 = \frac{V}{K} \quad \text{(top speed at zero load)}
+\end{equation}
+
+\textbf{Why this matters for picking a driver:} the driver basically controls $V$ by
+chopping the supply voltage on and off really fast (PWM). Changing the duty cycle shifts
+this whole torque-speed line up or down, which is how you get speed control.
 
 % ============================================================
-%  SECTION 3: CYTRON iMD16 HARDWARE EVALUATION
+%  SECTION 3: iMD16 EVALUATION
 % ============================================================
-\section{Cytron iMD16 Hardware Evaluation}
+\section{Cytron iMD16 -- What It Actually Is}
 
-\subsection{Technical Specification Matrix}
+
+
+\subsection{Specs (from the datasheet)}
 
 \begin{table}[ht]
 \centering
-\caption{Cytron iMD16 — Consolidated Electrical \& Logic Specifications}
+\caption{Cytron iMD16 -- Key Specs}
 \label{tab:imd16_specs}
-\renewcommand{\arraystretch}{1.35}
-\begin{tabular}{@{}lll@{}}
-\toprule
-\textbf{Parameter} & \textbf{Value / Range} & \textbf{Engineering Significance} \\
-\midrule
-Operating Voltage Range      & 7\,V -- 30\,V DC             & Covers 12\,V and 24\,V brushed motor buses \\
-Continuous Current (per ch.) & 16\,A                        & 384\,W @ 24\,V sustained per channel \\
-Peak Current (per ch.)       & 30\,A ($<10$\,s)             & 720\,W @ 24\,V for incline surge events \\
-Logic Level High (V$_{IH}$)  & 3.0\,V -- 30\,V              & Directly interfaces 24\,V PLC outputs \\
-Logic Level Low (V$_{IL}$)   & 0\,V -- 0.5\,V               & Compatible with 3.3\,V and 5\,V MCU GPIOs \\
-PWM Frequency (External)     & Up to 20\,kHz                & Inaudible switching; reduced audible noise \\
-PWM Frequency (Internal Pot) & 9\,kHz -- 11\,kHz            & Onboard manual override speed generator \\
-Brake / Coast Mode           & Configurable (hardware)      & Terminal-level brake topology selection \\
-Reverse Polarity Protection  & Yes (onboard)                & Protects against wiring errors in field \\
-Overcurrent / Thermal Cutoff & Yes (onboard)                & Hardware fault protection without MCU \\
-Chassis                      & Enclosed aluminium extrusion & IP-rated ruggedness, passive heat sink \\
-Dimensions                   & $83\times57\times29$\,mm     & Compact; DIN rail or panel mountable \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\subsection{Market Differentiation Analysis}
-
-\subsubsection{Enclosed Aluminium Chassis and Passive Thermal Management}
-
-Unlike the majority of comparably-priced brushed DC motor drivers that ship as open PCBs
-(e.g., L298N breakouts, BTS7960 modules), the iMD16 encases all power electronics within a
-machined aluminium extrusion that simultaneously provides structural rigidity, EMI shielding,
-and passive heat-sinking to the enclosure surface. This is non-trivial in field robotic
-applications where vibration, humidity, and conductive particulates (such as the fine dust and
-moisture prevalent in the Himalayan foothills, along with unprecedented rainfall surrounding IIT Mandi) would rapidly degrade
-exposed PCB traces and power MOSFETs.
-
-\subsubsection{High-Voltage Logic Tolerance (3\,V -- 30\,V)}
-
-Industrial PLCs and process controllers typically drive I/O lines at 24\,V. The iMD16's
-logic input range of 3\,V -- 30\,V permits direct interfacing without level-shifting circuitry,
-substantially reducing BOM cost and failure modes in hybrid PLC-robot integration scenarios.
-This contrasts with the 3.3\,V/5\,V-only logic tolerance of most hobbyist-grade drivers that
-require additional optocoupler stages for 24\,V PLC compatibility.
-
-\subsubsection{Built-In Manual Potentiometer and Signal Generator}
-
-An onboard PWM signal generator — adjustable via a physical potentiometer — permits motor
-speed control without any external controller. This provides a meaningful advantage in lab
-bench characterisation, dyno testing of motors, and fail-safe manual override operation during
-field deployment, all without requiring a connected microcontroller.
-\subsection{Configurability Limits}
-
-\subsubsection{Hardware-Only Configuration (No Firmware Interface)}
-
-The iMD16's operational mode is selected entirely through physical jumper blocks and screw
-terminals rather than a firmware register or communication bus. While this eliminates firmware
-update risk and simplifies deterministic failure analysis, it also means that:
-\begin{itemize}
-    \item Braking mode (active brake vs.\ coast) cannot be changed dynamically in software.
-    \item Current-limiting thresholds are fixed by hardware; adaptive limiting requires external
-          circuitry.
-    \item No serial telemetry, current sensing, or fault register readback is available to
-          the host processor.
-\end{itemize}
-
-\subsubsection{Lack of Dynamic Brake Energy Dump Resistor}
-
-When a loaded motor is commanded to decelerate rapidly, the mechanical kinetic energy is
-regenerated as electrical energy back through the driver into the supply rail. The iMD16 does
-not incorporate a dedicated brake-energy dump resistor or active clamping circuit. When powered
-by an AC-DC Switched Mode Power Supply (SMPS), which typically lacks the bidirectional
-energy absorption capability of a battery, this regenerative current can drive the bus voltage
-above the supply's overvoltage protection threshold, causing a fault shutdown.
-
-\textbf{Engineering Mitigation:} A parallel battery buffer (e.g., a 24\,V LiFePO$_4$ pack
-connected in parallel with the SMPS output through a diode-or-switch topology) must be
-included in the power architecture. The battery absorbs the regenerative pulse, preventing
-bus overvoltage while simultaneously providing the peak current headroom during stall events.
-
-% ============================================================
-\subsection{Tech Lead Power-Scaling Boundary Analysis}
-\label{sec:scaling}
-
-A critical function of a Tech Lead is the ability to rigorously quantify the boundary between
-\textit{where a component can be deployed} and \textit{where it is fundamentally misapplied}.
-The following subsections provide mathematical proof that the iMD16 cannot serve as a traction
-driver for passenger electric vehicles, while confirming its suitability for auxiliary and
-prototype robotic tasks.
-
-\subsubsection{Case A: Passenger Electric Bus (e.g., 800\,V PMSM Drivetrain)}
-
-A typical urban single-decker electric bus is powered by a Permanent Magnet Synchronous
-Motor (PMSM) drivetrain with the following representative specifications:
-
-\[
-    V_\text{bus} = 800\,\mathrm{V}, \qquad
-    P_\text{rated} = 150\,\mathrm{kW}\text{--}250\,\mathrm{kW}, \qquad
-    I_\text{peak} > 300\,\mathrm{A}
-\]
-
-The iMD16's maximum power output is bounded by its voltage and current limits:
-
-\begin{align}
-    P_\text{iMD16,max} &= V_\text{max} \times I_\text{cont} \notag\\
-                        &= 30\,\mathrm{V} \times 16\,\mathrm{A} \notag\\
-                        &= 480\,\mathrm{W} \label{eq:pmax}
-\end{align}
-
-The power deficit is therefore:
-
-\begin{equation}
-    \Delta P = P_\text{bus} - P_\text{iMD16,max}
-             = 150{,}000\,\mathrm{W} - 480\,\mathrm{W}
-             \approx \mathbf{149.5\,\mathrm{kW}}
-\end{equation}
-
-Furthermore, even at 30\,V the iMD16 produces only:
-
-\[
-    \frac{480\,\mathrm{W}}{150{,}000\,\mathrm{W}} \times 100\% \approx \mathbf{0.32\%}
-\]
-of the minimum required traction power. Voltage compatibility is also impossible: the iMD16's
-30\,V ceiling is $26.7\times$ below the 800\,V bus, and PMSM drives require three-phase
-inverter topologies entirely distinct from the single/dual-channel H-bridge architecture of
-the iMD16.
-
-\textbf{Conclusion:} The iMD16 is \textit{fundamentally incompatible} with passenger electric
-bus traction. Deployment here would require not an upgrade but a complete system replacement
-with SiC/GaN-based multi-phase inverters (e.g., BorgWarner, Valeo, or equivalent OEM tier).
-
-\subsubsection{Case B: Electric Auto-Rickshaw / E-Toto (48\,V -- 60\,V BLDC)}
-
-Commercial three-wheeled electric auto-rickshaws (E-Totos) in the Indian market standardly
-employ:
-\[
-    V_\text{nominal} = 48\,\mathrm{V}\text{ or }60\,\mathrm{V}, \qquad
-    P_\text{motor} \approx 1{,}000\,\mathrm{W}\text{--}3{,}500\,\mathrm{W}
-\]
-\[
-    \text{Motor type: 3-phase BLDC, multi-pole hub or mid-drive}
-\]
-
-Two absolute incompatibilities exist:
-
-\begin{enumerate}
-    \item \textbf{Voltage exceedance:}
-    \[
-        V_\text{E-Toto} = 48\,\mathrm{V} > V_\text{iMD16,max} = 30\,\mathrm{V}
-    \]
-    Operating at 48\,V would instantly destroy the iMD16's power FETs and protection
-    circuitry, which are rated for a maximum of 30\,V.
-
-    \item \textbf{Motor topology mismatch:} BLDC motors require three-phase commutation with
-    Hall-effect sensor feedback (or sensorless back-EMF estimation). The iMD16 is a
-    \textit{brushed DC} H-bridge driver with no provision for multi-phase switching, Field
-    Oriented Control (FOC), or encoder/Hall feedback. A brushed H-bridge \textit{cannot}
-    electrically commutate a BLDC motor under any operating condition.
-\end{enumerate}
-
-\textbf{Conclusion:} The iMD16 cannot interface with E-Toto drivetrains on either voltage or
-topology grounds. The correct technology for this domain is a dedicated 3-phase BLDC/PMSM
-controller (e.g., Kelly KLS, VESC 75/300, or Sevcon Gen4).
-
-\subsubsection{Legitimate Application Domains for the iMD16}
-
-\begin{table}[ht]
-\centering
-\caption{Validated Application Scope of the Cytron iMD16}
-\label{tab:imd16_scope}
 \renewcommand{\arraystretch}{1.3}
 \begin{tabular}{@{}lll@{}}
 \toprule
-\textbf{Application} & \textbf{Feasibility} & \textbf{Rationale} \\
+\textbf{Parameter} & \textbf{Value} & \textbf{Why it matters} \\
 \midrule
-Campus AMR skid-steer (24\,V brushed)   & \textcolor{green!50!black}{\textbf{Fully Suitable}} & Matches voltage, current, topology \\
-Scale-model EV prototype testing        & \textcolor{green!50!black}{\textbf{Fully Suitable}} & Low-voltage lab characterisation \\
-Bus door / ramp actuator control        & \textcolor{green!50!black}{\textbf{Auxiliary OK}}   & Sub-30\,V linear actuator drive \\
-Conveyor belt / gantry positioning      & \textcolor{green!50!black}{\textbf{Suitable}}       & Continuous 16\,A load well within spec \\
-E-Toto traction drive                   & \textcolor{red!70!black}{\textbf{Incompatible}}     & Voltage and topology mismatch \\
-Electric bus traction                   & \textcolor{red!70!black}{\textbf{Incompatible}}     & Power deficit $>149$\,kW \\
+Operating voltage      & 7--30\,V DC          & Works with 12\,V or 24\,V batteries \\
+Continuous current     & 16\,A per channel    & Plenty for a small wheelchair-size motor \\
+Peak current            & 30\,A (under 10\,s)  & Headroom for starting torque / bumps \\
+Logic input             & 3--30\,V             & Works directly off a Pi's 3.3\,V GPIO \\
+PWM frequency (ext.)    & up to 20\,kHz        & Quiet, doesn't whine \\
+Reverse polarity protect & Yes                 & Saves me if I wire the battery backwards \\
+Overcurrent/thermal cutoff & Yes               & Won't fry itself if a wheel jams \\
+Size                    & $83\times57\times29$\,mm & Small enough to mount easily \\
 \bottomrule
 \end{tabular}
 \end{table}
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{Screenshot from 2026-07-01 00-28-14.png}
+    \caption{H bridge circuit Diagram made by me}
+    \label{fig:sojdfsjf}
+\end{figure}
+
+\subsection{Things I Like About It}
+
+\begin{itemize}
+    \item \textbf{It's enclosed.} A lot of the cheaper drivers (L298N boards etc.) are
+    just bare PCBs. The iMD16 is in a metal case, which seems like a good idea given how
+    much it rains here and how dusty the paths get.
+    \item \textbf{Logic level is flexible.} It can take anywhere from 3\,V to 30\,V on the
+    signal pins, so I don't need any extra level-shifting circuitry between it and a
+    Raspberry Pi (which outputs 3.3\,V).
+    \item \textbf{Built-in protection.} Reverse polarity and overcurrent protection mean
+    I'm less likely to destroy it by wiring something wrong, which, being honest, is a real
+    risk for me right now.
+\end{itemize}
+
+\subsection{Things to Watch Out For}
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{abc.png}
+    \caption{IMD 16 USAGE}
+    \label{fig:placeholder}
+\end{figure}
+\begin{itemize}
+    \item \textbf{No software config.} Everything (braking mode, current limits) is set by
+    jumpers/screw terminals, not firmware. So I can't change braking behaviour on the fly
+    from code -- I'd have to physically rewire it.
+    \item \textbf{No current sensing feedback.} It doesn't tell my code how much current
+    it's drawing, so I can't easily detect a stalled wheel in software. I'd need to add an
+    external current sensor (like an ACS712 module, which is cheap, around Rs.\,150) if I
+    want that later.
+    \item \textbf{Braking energy.} If a heavy motor is decelerated suddenly, some energy
+    gets pushed back into the supply. With a basic SMPS power supply this could trip an
+    overvoltage fault. Running off a battery instead (which I'm planning to do anyway)
+    mostly avoids this because batteries can absorb that little kick of energy.
+\end{itemize}
+
+\subsection{Is It Overkill or Underpowered for What I Want?}
+
+I did a rough sanity check on the lower and upper ends of what this driver could possibly
+be used for, mostly just so I understood the scale of things.
+
+\textbf{Upper end -- could it drive something like an electric bus motor?} No, not even
+close. A bus traction motor needs on the order of 150,000\,W. The iMD16 tops out around:
+
+\begin{equation}
+    P_\text{max} = 30\,\text{V} \times 16\,\text{A} = 480\,\text{W}
+\end{equation}
+
+That's about 300 times too small. Obviously nobody would actually try this, but it helped
+me get a feel for where the iMD16 sits.
+
+\textbf{Lower end -- is it overkill for a small campus robot?} Not really. A small
+wheelchair-motor-class robot pulling a parcel pannier needs maybe 1--3\,A per motor
+under normal driving and a short burst higher than that going up a slope. 16\,A continuous
+and 30\,A peak per channel is actually a comfortable margin, not overkill, especially
+since I want some safety margin for the steep bits of campus.
+
+\textbf{Conclusion for my project:} the iMD16 is a good fit for a small 12\,V or 24\,V
+brushed-motor robot. It would be wrong for anything bigger (e-rickshaw scale and up needs
+a completely different, 3-phase BLDC controller).
 
 % ============================================================
-%  SECTION 4: COMPETITIVE TECHNOLOGY REVIEW
+%  SECTION 4: OTHER OPTIONS CONSIDERED
 % ============================================================
-\section{Competitive Technology Review}
+\section{Other Drivers I Looked At}
 
-For applications requiring closed-loop velocity/torque control, bus communication, or
-three-phase motor support beyond the iMD16's capability envelope, the following alternatives
-represent superior engineering choices. The comparison is structured around three scaling
-tiers: dual-channel brushed with serial telemetry, precision closed-loop servo, and
-multi-axis brushless with industrial fieldbus.
+For completeness, here are a couple of other options I found while researching, in case
+the iMD16 turns out to not be available or I need something cheaper/bigger later.
 
 \begin{table}[ht]
 \centering
-\caption{High-Tier Motor Driver Comparison — Alternatives to Cytron iMD16}
+\caption{Other Motor Driver Options}
 \label{tab:competitive}
-\renewcommand{\arraystretch}{1.45}
-\begin{tabular}{@{}p{3.2cm}p{3.2cm}p{3.2cm}p{4.0cm}@{}}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{@{}lll@{}}
 \toprule
-\textbf{Parameter} &
-\textbf{Cytron MDDS30} \newline \footnotesize SmartDriveDuo &
-\textbf{Maxon ESCON} \newline \footnotesize Module 50/5 &
-\textbf{Roboteq SBL2360} \\
+\textbf{Driver} & \textbf{Rough Price} & \textbf{Notes} \\
 \midrule
-Motor Type       & Brushed DC (dual) & Brushed / Brushless DC & Brushless BLDC \\
-Channels         & 2 independent     & 1 per module           & 2 (dual-axis) \\
-Voltage Range    & 7\,V -- 30\,V     & 10\,V -- 50\,V         & 10\,V -- 60\,V \\
-Cont.\ Current   & 30\,A / ch        & 5\,A / ch              & 60\,A / ch \\
-Peak Current     & 60\,A ($<5$\,s)   & 15\,A ($<5$\,s)        & 120\,A ($<2$\,s) \\
-Control Interface & PWM, RC, Analog, \newline Packetized Serial & USB/UART config, \newline Analog/PWM in & CAN\,bus (CANopen), \newline EtherCAT, RS-232 \\
-Closed-Loop      & Speed (encoder)   & Velocity \& Torque \newline (encoder/Hall) & FOC Velocity, \newline Torque, Position \\
-Comm.\ Protocol  & Packetized UART   & ESCON Studio USB       & CANopen, \newline EtherCAT, USB \\
-Scriptable Logic & No                & No                     & Yes (MicroBasic) \\
-Fault Telemetry  & Serial readback   & USB/analogue out        & Full CAN bus \newline fault broadcast \\
-Form Factor      & Open PCB          & Module (SMD)           & Enclosed PCB \\
-Key Differentiator & Dual-channel, \newline RC/serial hybrid & Precision closed-loop \newline servo performance & BLDC + CANopen + \newline Scripted edge logic \\
+Cytron MD20A        & Rs.\,2000  &  Delivers 20A continuously and 60A peak. This model includes convenient manual testing buttons, excellent thermal management (no heatsink required), and works with standard PWM and DIR inputs. \\
+BTS7960 module       & Rs.\,300--400  & Higher current (\textasciitilde43\,A claimed) but bare board, no protection \\
+Cytron iMD16         & \textasciitilde Rs.\,3{,}200 & What I'm proposing -- enclosed, protected, good logic range \\
+Cytron MDDS30        & \textasciitilde Rs.\,5{,}500 & smartdrive, more current, probably overkill for now \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-\subsection{Selection Guidance for Tech Lead Decision-Making}
-
-\begin{itemize}
-    \item \textbf{Cytron MDDS30:} Drop-in upgrade from the iMD16 for applications requiring
-    higher peak current headroom (60\,A vs.\ 30\,A) or closed-loop speed regulation via
-    encoder feedback with a packetized serial command interface. Ideal for the Husky-Mandi AMR
-    if budget allows replacing the iMD16 pair with a single MDDS30.
-
-    \item \textbf{Maxon ESCON 50/5:} Targeted at precision robotics (robotic arms,
-    medical-grade actuators) where tight torque control with sub-millisecond response is
-    required. Overkill for a campus AMR drivetrain; best reserved for gripper or
-    payload-positioning joints.
-
-    \item \textbf{Roboteq SBL2360:} The correct technology for 3-phase BLDC wheel hub motors
-    in a future Husky-Mandi revision. The CANopen/EtherCAT interface integrates natively with
-    ROS\,2 via the \texttt{ros2\_canopen} package, and the onboard MicroBasic scripting
-    engine enables distributed edge safety logic without burdening the Jetson compute budget.
-\end{itemize}
+Honestly the L298N is what most people start with because it's so cheap, but I've read
+that it has a pretty bad voltage drop across the H-bridge transistors (no protection
+diodes/MOSFETs the way iMD16 has), which wastes power and gets hot. Since the club
+already has a couple of iMD16 units sitting around from a previous project, I'm planning
+to just reuse one of those rather than buying anything new for this part.
 
 % ============================================================
-%  SECTION 5: PROJECT PROPOSAL — PROJECT HUSKY-MANDI AMR
+%  SECTION 5: ROBOT KINEMATICS
 % ============================================================
-\section{Competition-Focused Project Proposal: Project Husky-Mandi AMR}
+\section{Basic Robot Steering Math (Skid-Steer)}
 
-\subsection{Mission Statement and Design Mandate}
+\subsection{The Idea}
 
-\textit{Project Husky-Mandi} proposes the design, fabrication, and field deployment of an
-Autonomous Mobile Robot (AMR) engineered to perform campus parcel and supply delivery at
-IIT Mandi. Unlike flat-campus AMR deployments at IITs in the plains, the IIT Mandi campus
-presents a uniquely hostile navigation environment:
+The robot is a simple 4-wheel skid-steer design (think small tank, no steering wheels).
+You turn by spinning the left and right wheels at different speeds. It's mechanically
+simple -- no servo steering linkage to build.
 
-\begin{itemize}
-    \item \textbf{Steep gradients:} Multiple campus pathways exceed 15\textdegree\ incline,
-    demanding sustained high-torque output well beyond what most commodity AMR platforms
-    provide.
-    \item \textbf{GNSS satellite occlusion:} The surrounding Uhl River valley and Dhauladhar
-    mountain ridgeline occlude large arcs of sky, degrading standard GPS/GNSS fix quality and
-    causing frequent position jumps and signal loss in single-band receivers.
-    \item \textbf{Variable terrain:} Mixed surfaces including poured concrete, interlocking
-    paver blocks, exposed gravel, and seasonal moisture/ice accumulation require robust
-    traction and slip-detection.
-\end{itemize}
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[scale=1.0, font=\small]
+  \draw[thick, fill=gray!10] (-1.2,-1.6) rectangle (1.2,1.6);
+  \node at (0,0) {\textbf{robot}};
+  \draw[->, thick] (0,0) -- (0,1.2) node[right]{forward};
 
-The Husky-Mandi AMR addresses each of these constraints through a purpose-built hardware and
-software architecture described in the following sections.
+  \draw[fill=black!70, rounded corners=2pt] (-1.6,0.8) rectangle (-1.2,1.4);
+  \draw[fill=black!70, rounded corners=2pt] (-1.6,-1.4) rectangle (-1.2,-0.8);
+  \node[left] at (-1.6, 1.1) {FL};
+  \node[left] at (-1.6,-1.1) {RL};
 
-\subsection{Drivetrain Architecture and Role of the Cytron iMD16}
+  \draw[fill=black!70, rounded corners=2pt] (1.2,0.8) rectangle (1.6,1.4);
+  \draw[fill=black!70, rounded corners=2pt] (1.2,-1.4) rectangle (1.6,-0.8);
+  \node[right] at (1.6, 1.1) {FR};
+  \node[right] at (1.6,-1.1) {RR};
 
-\subsubsection{Motor Configuration}
+  \draw[<->, dashed] (-1.4,-1.8) -- (1.4,-1.8) node[midway, below]{$2b$ (track width)};
+\end{tikzpicture}
+\caption{4-wheel skid-steer layout. Left side wheels and right side wheels each move
+together.}
+\label{fig:kinematics_geom}
+\end{figure}
 
-The AMR adopts a \textbf{4-wheel heavy-duty skid-steer} configuration, selected for its
-mechanical simplicity, zero turning radius, and superior hill-holding torque distribution
-relative to differential-drive (2-wheel) platforms.
+\subsection{The Equations}
 
-Each wheel is driven by a high-torque \textbf{24\,V brushed planetary geared motor}
-(representative specification: $T_\text{stall} \geq 50$\,N\,m at gearbox output,
-$n_\text{free} \approx 120$\,RPM). Four such motors are arranged as two symmetrical banks:
-
-\[
-    \text{Left bank: Motor FL} + \text{Motor RL} \quad\longleftrightarrow\quad
-    \textbf{iMD16 Unit A (Channel 1, Channel 2)}
-\]
-\[
-    \text{Right bank: Motor FR} + \text{Motor RR} \quad\longleftrightarrow\quad
-    \textbf{iMD16 Unit B (Channel 1, Channel 2)}
-\]
-
-\subsubsection{Current Surge Analysis During Incline Negotiation}
-
-Applying the steady-state model from Section~2, with a representative motor specification
-($K = 0.18$\,V\,s/rad, $R = 0.5\,\Omega$, $V = 24$\,V), the stall current per motor is:
+Let $v_L$ and $v_R$ be the left and right side wheel speeds, $b$ be half the track width,
+and $r$ the wheel radius. The robot's forward speed $v$ and turn rate $\dot{\psi}$ are:
 
 \begin{equation}
-    i_\text{stall} = \frac{V}{R} = \frac{24\,\mathrm{V}}{0.5\,\Omega} = 48\,\mathrm{A}
+    v = \frac{v_R + v_L}{2}, \qquad \dot{\psi} = \frac{v_R - v_L}{2b}
+    \label{eq:fwd}
 \end{equation}
 
-At the moment of incline engagement (low speed, high torque demand), each motor may draw
-up to 48\,A transiently. With two motors per iMD16 channel (paralleled through the channel
-output), the driver must handle up to:
+And going the other way, if I know what forward speed and turn rate I want, I can solve
+for the wheel speeds I need to command:
 
 \begin{equation}
-    I_\text{peak,channel} = 48\,\mathrm{A} \quad
-    \Leftarrow \quad \text{iMD16 peak rating: }30\,\mathrm{A}
+    v_R = v + b\,\dot{\psi}, \qquad v_L = v - b\,\dot{\psi}
+    \label{eq:inv}
 \end{equation}
 
-\noindent \textbf{Engineering response:} Motor selection is constrained to units with
-$R \geq 0.8\,\Omega$ to limit per-motor stall current to $\leq 30\,\mathrm{A}$ per channel.
-Alternatively, current-limiting resistors or active current shunt circuitry is inserted
-in-line. The 30\,A ($<10$\,s) peak rating of the iMD16 is adequate for the 2--5\,s
-transient duration typical of a gradient transition event.
+Then divide by wheel radius $r$ to get angular speed, and divide by the motor's no-load
+speed $\omega_0$ (from Section 2) to get a PWM duty cycle between 0 and 100\%.
 
-\subsubsection{PWM Control Interface from Jetson Orin Nano}
+\subsection{Quick Numeric Example}
 
-The NVIDIA Jetson Orin Nano exposes 3.3\,V GPIO-compatible PWM outputs. The iMD16's logic
-input high threshold of 3.0\,V is satisfied by Jetson 3.3\,V GPIO without any level-shifting
-circuitry. The ROS\,2 motor controller node publishes to \texttt{/cmd\_vel}, which the
-low-level driver node converts to left/right duty-cycle PWM signals via the Jetson's
-hardware PWM controller, targeting 20\,kHz switching frequency to eliminate audible motor
-whine from the iMD16's internal carrier.
+Say $b = 0.25$\,m, $r = 0.075$\,m (small wheel), $\omega_0 \approx 10$\,rad/s. I want to
+drive forward at $v = 0.3$\,m/s while turning gently at $\dot{\psi} = 0.2$\,rad/s.
 
-\subsection{Full System Architecture and Technology Stack}
+\begin{align*}
+    v_R &= 0.3 + 0.25 \times 0.2 = 0.35\,\text{m/s} \\
+    v_L &= 0.3 - 0.25 \times 0.2 = 0.25\,\text{m/s}
+\end{align*}
 
-\subsubsection{Compute Platform: NVIDIA Jetson Orin Nano}
+Converting to wheel angular speed ($\div r$) and then duty cycle ($\div \omega_0$):
 
-The NVIDIA Jetson Orin Nano serves as the primary onboard compute platform, selected for:
+\begin{align*}
+    \omega_R &= 0.35/0.075 = 4.67\,\text{rad/s} \rightarrow D_R = 46.7\% \\
+    \omega_L &= 0.25/0.075 = 3.33\,\text{rad/s} \rightarrow D_L = 33.3\%
+\end{align*}
+
+That's basically the whole control loop -- read a desired speed/turn command, do this
+math, send two PWM values to the driver.
+
+% ============================================================
+%  SECTION 6: THE ROBOT PROPOSAL
+% ============================================================
+\section{The Actual Robot Proposal}
+
+\subsection{What I'm Trying to Build}
+
+A small delivery cart that can move along a fixed, pre-mapped route around a part of
+campus (not the whole campus -- something more like one hostel block to one
+academic block to start) carrying a small parcel. I'm \emph{not} trying to do full
+outdoor SLAM or GPS navigation in version 1. That's a lot harder than it sounds, and
+honestly outside what I can debug right now as a first-year. Instead I want to use simple
+markers (basically big printed QR-code-like tags called ArUco markers) stuck along the
+route as landmarks, which is a well-documented beginner-friendly approach.
+
+\subsection{Why I Dropped the Fancy Hardware}
+
+My first draft of this proposal had a Jetson Orin Nano, an OAK-D Pro depth camera, GPS,
+and four separate iMD16 drivers -- which added up to almost Rs.\,1.75 lakh. That's not
+realistic for a first project, both budget-wise and skill-wise. So I cut it down hard:
+
 \begin{itemize}
-    \item \textbf{1024-core NVIDIA Ampere GPU + 8$\times$ Arm Cortex-A78AE CPU}: Sufficient
-    headroom to run YOLOv8 inference at 30\,fps while simultaneously executing EKF sensor
-    fusion and ROS\,2 navigation stack.
-    \item \textbf{MIPI CSI-2 camera interface}: Direct hardware-accelerated video pipeline
-    from OAK-D Pro.
-    \item \textbf{Low power envelope} ($<25$\,W): Permitting multi-hour operation on a compact
-    LiFePO$_4$ battery bus.
-    \item \textbf{JetPack SDK}: Native support for CUDA, TensorRT, DeepStream, and
-    ROS\,2 Humble.
+    \item \textbf{Jetson Orin Nano $\rightarrow$ Raspberry Pi.} A Pi 4 (or Pi 5 if the
+    club already owns one) is more than enough to run OpenCV's ArUco detector and a
+    simple control loop. I don't need real-time YOLO segmentation for a slow indoor-ish
+    delivery cart on a known path.
+    \item \textbf{OAK-D Pro depth camera $\rightarrow$ regular USB webcam.} I just need
+    to see ArUco markers and maybe do basic obstacle blob detection, not full depth
+    sensing. A normal Rs.\,800 webcam can do this fine for version 1.
+    \item \textbf{4$\times$ iMD16} Instead of one driver
+    per wheel, I'll wire left-side motors together and right-side motors together (like
+    most small skid-steer kits do) and drive them off the two channels of a single iMD16.
+    This is a downgrade in flexibility (no independent per-wheel torque vectoring) but
+    it's a totally reasonable tradeoff for a v1 robot, and it's the one piece of hardware
+    the club already has.
+    \item \textbf{GPS module $\rightarrow$ dropped entirely.} Wasn't needed even in the
+    original plan since the route is fixed, but now it's extra obviously unnecessary.
 \end{itemize}
 
-\subsubsection{Operating System and Middleware: ROS\,2 Humble Hawksbill}
+\subsection{Rough System Sketch}
 
-The full navigation, perception, and control stack is implemented in ROS\,2 Humble, the
-current LTS release, targeting Ubuntu 22.04 LTS on JetPack 6. Key node architecture:
-
-\begin{lstlisting}[language=bash, caption={Core ROS\,2 Node Graph (abridged)}]
-/oak_d_pro_node          # OAK-D Pro depth + RGB stream publisher
-/yolov8_seg_node         # Obstacle segmentation inference (TensorRT)
-/robot_localization      # EKF node: GNSS + IMU + wheel encoder fusion
-/nav2_bringup            # Navigation2 stack (A*, DWB local planner)
-/imd16_driver_node       # PWM cmd_vel -> iMD16 duty cycle bridge
-/ublox_driver            # u-blox ZED-F9P GNSS NMEA/UBX publisher
-/bno085_imu_node         # 9-axis IMU data publisher
-/encoder_odometry_node   # Wheel encoder dead-reckoning odometry
-/estop_monitor_node      # 433 MHz E-Stop watchdog node
+\begin{lstlisting}[language=bash, caption={What's running on the Pi (rough plan, not final)}]
+- webcam_node          : grabs frames from the USB webcam
+- aruco_node           : runs OpenCV ArUco detection on each frame
+- motor_node           : takes a simple (forward_speed, turn_rate) command
+                         and sends PWM + direction to the iMD16
+- main_loop            : if marker is visible -> steer toward it
+                         if no marker -> go straight slowly, look for one
 \end{lstlisting}
 
-\subsubsection{Perception: OAK-D Pro Depth Camera with YOLOv8 Segmentation}
+I'm planning to write this in plain Python with OpenCV first, not full ROS\,2. ROS\,2 is
+genuinely useful but it's a lot of extra infrastructure to learn for a robot this small,
+and I think I'll understand my own code better if I write the control loop directly. I
+might revisit ROS\,2 in a v2 once I'm more comfortable.
 
-The Luxonis OAK-D Pro is chosen as the primary perception sensor for its onboard Intel
-Myriad X VPU, which executes hardware-accelerated neural network inference directly on the
-camera module without consuming Jetson GPU cycles.
+\subsection{Driving the Motors}
 
+Each iMD16 channel takes a PWM signal plus a direction pin. The Pi's GPIO pins run at
+3.3\,V logic which is within the iMD16's 3--30\,V input range, so no extra level shifter
+is needed.
+
+\begin{lstlisting}[language=Python, caption={Rough motor control sketch}]
+def set_motor(pwm_pin, dir_pin, speed):
+    # speed is -1.0 to 1.0
+    GPIO.output(dir_pin, GPIO.HIGH if speed >= 0 else GPIO.LOW)
+    duty = abs(speed) * 100.0
+    pwm_pin.ChangeDutyCycle(duty)
+
+def drive(v, omega, b=0.25, r=0.075, w0=10.0):
+    # v: forward speed (m/s), omega: turn rate (rad/s)
+    v_r = v + b * omega
+    v_l = v - b * omega
+    speed_r = (v_r / r) / w0
+    speed_l = (v_l / r) / w0
+    set_motor(PWM_R, DIR_R, speed_r)
+    set_motor(PWM_L, DIR_L, speed_l)
+\end{lstlisting}
+
+\subsection{Safety}
+
+Since this is a slow, small robot on a known path (not 24\,kg+ moving at speed), I'm not
+planning anything fancy here -- just:
 \begin{itemize}
-    \item \textbf{Depth modality:} Structured-light stereo depth provides obstacle point
-    clouds at 30\,Hz up to 15\,m, feeding the Nav2 3D costmap.
-    \item \textbf{YOLOv8-seg inference:} A custom YOLOv8-segmentation model, trained on a
-    mixed dataset of campus pedestrian, bicycle, staircase, and gradient-change imagery
-    (augmented with Himalayan terrain samples), is compiled to OpenVINO IR and deployed on
-    the Myriad X VPU. Instance segmentation masks are projected into the costmap as inflation
-    obstacles with class-conditional safety margins (pedestrian: 1.2\,m; static obstacle:
-    0.5\,m).
-    \item \textbf{Visual Odometry:} Stereo visual odometry (ORB-SLAM3 or DepthAI Visual
-    Odometry node) provides 6-DoF pose estimates at 30\,Hz as a redundant localisation
-    source, critical during GNSS outage intervals in the mountain valley.
+    \item A physical kill switch on the battery line I can hit by hand.
+    \item Software speed cap so it never drives faster than walking pace.
+    \item Basic "stop if marker not seen for N seconds" fallback so it doesn't wander off
+    blindly.
 \end{itemize}
 
-\subsubsection{Localisation: EKF Sensor Fusion for Himalayan GNSS Conditions}
-
-\paragraph{Problem Statement.}
-Standard single-band GNSS receivers (e.g., u-blox M8N) in the Uhl Valley report CEP
-(Circular Error Probable) errors exceeding 15\,m during satellite occlusion events caused
-by the surrounding ridgeline. This is entirely incompatible with a corridor-following campus
-AMR that requires $<0.3$\,m lateral accuracy on 2.5\,m-wide pathways.
-
-\paragraph{Multi-Band GNSS Solution.}
-The \textbf{u-blox ZED-F9P} is a dual-frequency (L1 + L5 / L1 + L2) RTK-capable GNSS
-receiver that:
-\begin{itemize}
-    \item Processes both GPS, GLONASS, Galileo, and BeiDou constellations simultaneously,
-    maximising the number of visible satellites in partial sky occlusion.
-    \item Achieves RTK Fixed accuracy of $\pm1$\,cm horizontal (with correction stream)
-    or $\pm1.5$\,m SBAS accuracy in standalone mode.
-    \item Outputs standard NMEA / proprietary UBX protocol at up to 25\,Hz, consumed by
-    the \texttt{ublox\_gps} ROS\,2 driver node.
-\end{itemize}
-
-\paragraph{Extended Kalman Filter Architecture.}
-The \texttt{robot\_localization} ROS\,2 package implements a full EKF that fuses multiple
-sensor modalities into a consistent pose estimate. The state vector $\mathbf{x}$ and
-measurement model are:
-
-\begin{equation}
-    \mathbf{x} = \bigl[\,
-        x,\; y,\; z,\;
-        \phi,\; \theta,\; \psi,\;
-        \dot{x},\; \dot{y},\; \dot{z},\;
-        \dot{\phi},\; \dot{\theta},\; \dot{\psi},\;
-        \ddot{x},\; \ddot{y},\; \ddot{z}
-    \,\bigr]^\top
-    \label{eq:ekf_state}
-\end{equation}
-
-The EKF prediction step propagates the state using the IMU measurements, while the correction
-steps accept asynchronous observations from each sensor modality:
-
-\begin{equation}
-    \hat{\mathbf{x}}_{k|k} = \hat{\mathbf{x}}_{k|k-1} +
-    \mathbf{K}_k \left(\mathbf{z}_k - h(\hat{\mathbf{x}}_{k|k-1})\right)
-    \label{eq:ekf_update}
-\end{equation}
-
-where $\mathbf{K}_k$ is the Kalman gain and $h(\cdot)$ is the observation model mapping
-the state to the expected measurement.
-
-\textbf{Sensor fusion schedule:}
-\begin{itemize}
-    \item \textbf{9-axis IMU (BNO085):} 200\,Hz; provides $[\ddot{x}, \ddot{y}, \ddot{z},
-    \dot{\phi}, \dot{\theta}, \dot{\psi}]$ — prediction backbone.
-    \item \textbf{Wheel encoder odometry:} 50\,Hz; provides $[x, y, \psi, \dot{x},
-    \dot{\psi}]$ — continuous dead-reckoning constraint.
-    \item \textbf{u-blox ZED-F9P GNSS:} 10\,Hz; provides $[x, y, z]$ absolute position —
-    drift correction.
-    \item \textbf{Visual odometry (OAK-D Pro):} 30\,Hz; provides $[x, y, z, \phi, \theta,
-    \psi]$ — bridge during GNSS outage and steep terrain transitions.
-\end{itemize}
-
-This multi-modal fusion architecture ensures that even during complete GNSS blackout (e.g.,
-under a building overhang or deeply shadowed valley section), the IMU + wheel encoder +
-visual odometry combination maintains localisation accuracy within the Nav2 path-following
-tolerance.
-
-\subsection{Multi-Layered Safety System}
-
-The safety architecture follows a defence-in-depth philosophy, with independent software and
-hardware safety layers that cannot mutually defeat one another.
-
-\subsubsection{Layer 1 — Software Costmap Obstacle Avoidance}
-
-Nav2's layered costmap system maintains both a \textbf{static map layer} (pre-surveyed campus
-footpaths) and a \textbf{dynamic obstacle layer} populated at 30\,Hz from the OAK-D Pro
-segmentation pipeline. When a novel obstacle enters the inflation radius of the local costmap
-planner, the DWB (Dynamic Window-Based) local planner executes a smooth velocity-ramping
-deceleration profile, bringing the AMR to a stop within its computed stopping distance
-without any abrupt braking that would destabilise the payload.
-
-\subsubsection{Layer 2 — Hardware 433\,MHz Wireless Emergency Stop}
-
-A dedicated \textbf{433\,MHz RF Emergency Stop} system provides a hardware-layer kill that
-is completely independent of the Jetson compute stack, the ROS\,2 middleware, and the motor
-driver nodes. The architecture is as follows:
-
-\begin{enumerate}
-    \item A handheld transmitter broadcasts a continuous presence signal at 433\,MHz.
-    \item An onboard receiver module monitors the signal in a watchdog loop running on a
-    dedicated STM32 microcontroller (not the Jetson).
-    \item The STM32 drives the coil of a \textbf{heavy-duty contactor relay} inserted on the
-    main 24\,V battery positive rail supplying both iMD16 units.
-    \item If the E-Stop button is pressed, or if the 433\,MHz signal is lost for more than
-    250\,ms (dead-man's switch logic), the STM32 de-energises the contactor, cutting all
-    power to both iMD16 drivers and the motor banks simultaneously.
-\end{enumerate}
-
-\noindent This architecture guarantees that no software fault, ROS\,2 node crash, or
-Jetson power anomaly can prevent the physical emergency stop from functioning, as the
-contactor operates at the electrical power layer entirely below the software stack.
+A proper wireless e-stop system would be a nice v2 addition but it's not something I can
+justify spending money on right now.
 
 % ============================================================
-%  SECTION 6: INSTITUTIONAL ALIGNMENT
+%  SECTION 7: BUDGET
 % ============================================================
-\section{Institutional Alignment with IIT Mandi Research Mandates}
+\section{Budget}
 
-\subsection{Centre for AI and Robotics (CAIR)}
+This is the part I rewrote the most. Trying to keep the whole thing under Rs.\,30{,}000,
+using parts the club either already has or that are easy to get from a local electronics
+shop / Amazon / Robu.in.
 
-Project Husky-Mandi directly addresses CAIR's core research mandate of advancing deployable
-autonomous systems in non-trivial real-world environments. Specific alignment vectors include:
+\subsection{Bill of Materials}
+
+\begin{longtable}{@{}p{4.6cm}rp{3.6cm}rr@{}}
+\caption{Budget BOM -- Campus Delivery Robot v1}
+\label{tab:bom}\\
+\toprule
+\textbf{Item} & \textbf{Qty} & \textbf{Notes} & \textbf{Unit (Rs.)} & \textbf{Total (Rs.)} \\
+\midrule
+\endfirsthead
+\multicolumn{5}{c}{\small\itshape (continued)}\\
+\toprule
+\textbf{Item} & \textbf{Qty} & \textbf{Notes} & \textbf{Unit (Rs.)} & \textbf{Total (Rs.)} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+Cytron iMD16 driver        & 4 & Already owned by the club (Rs.\,0 if reused) & 0 & 0 \\
+12\,V DC geared motor (300 RPM) & 4 & Cheap hobby-grade gear motors, left+right pairs wired together & 450 & 1{,}800 \\
+Wheels (rubber, 65\,mm)    & 4 & Matched to motor shaft & 120 & 480 \\
+12\,V 7\,Ah Lead-Acid battery & 1 & Cheaper than LiFePO$_4$, fine for v1, club may already have a spare & 1{,}400 & 1{,}400 \\
+Raspberry Pi 4 (4\,GB)     & 1 & Or reuse one from club inventory if available & 5{,}500 & 5{,}500 \\
+MicroSD card (32\,GB)      & 1 & For Pi OS & 400 & 400 \\
+USB webcam (720p)          & 1 & For ArUco marker detection & 800 & 800 \\
+ArUco markers (printed, laminated) & 15 & Print at campus print shop, laminate at a local shop & 30 & 450 \\
+12\,V to 5\,V buck converter & 1 & Powers the Pi off the main battery & 200 & 200 \\
+Jumper wires + breadboard  & 1 set & Prototyping & 250 & 250 \\
+Toggle switch (kill switch) & 1 & Main power cutoff & 80 & 80 \\
+Chassis: plywood/acrylic sheet (cut to size) & 1 & Cheapest option -- can laser-cut at the Fab Lab if free for club projects & 600 & 600 \\
+M3 nuts/bolts + standoffs  & 1 set & General assembly & 250 & 250 \\
+Cardboard/plastic box for parcel bay & 1 & Reused container, basically free & 100 & 100 \\
+Wiring (random gauge, from club stock) & --- & Hopefully scavenged from club leftovers & 300 & 300 \\
+\midrule
+\multicolumn{4}{r}{\textbf{Subtotal}} & \textbf{12{,}610} \\
+\end{longtable}
+
+\subsection{Summary}
+
+\begin{table}[ht]
+\centering
+\caption{Budget Summary}
+\label{tab:bom_summary}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{@{}lr@{}}
+\toprule
+\textbf{Item} & \textbf{Cost (Rs.)} \\
+\midrule
+Subtotal (parts above)        & 12{,}610 \\
+Contingency / mistakes buffer (\textasciitilde40\%) & 5{,}040 \\
+\midrule
+\textbf{Total}                 & \textbf{17{,}650} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+I put a fairly large 40\% contingency on this because, realistically, I'm going to burn
+out a motor driver pin or fry something testing this for the first time, and I'd rather
+plan for that honestly than pretend I'll get it right on the first try. Even with that
+buffer the total comes to under Rs.\,18{,}000, well inside the Rs.\,30{,}000 target, and
+if the Pi and iMD16 are both already available from the club's inventory, the real
+out-of-pocket cost could be closer to Rs.\,7{,}000--8{,}000.
+
+\subsection{What I Cut Out (and might add back later)}
 
 \begin{itemize}
-    \item \textbf{EKF sensor fusion research:} The Himalayan GNSS occlusion problem and the
-    multi-modal fusion architecture (GNSS + IMU + visual odometry + wheel encoders) constitutes
-    a publishable research contribution, as the specific multi-band GNSS + visual odometry
-    fallback architecture for mountain-campus AMRs has not been systematically characterised
-    in the published ROS\,2 literature.
-
-    \item \textbf{Terrain-adaptive navigation:} The gradient-aware costmap inflation and
-    traction-slip detection on mixed Himalayan surfaces (monsoon-wet stone, loose gravel,
-    frost-covered concrete) provides a unique environmental research dataset unavailable at
-    plains-campus institutions.
-
-    \item \textbf{Edge AI deployment:} The YOLOv8 segmentation pipeline on the OAK-D Pro
-    Myriad X VPU constitutes a case study in embedded neural network deployment without cloud
-    connectivity — directly aligned with CAIR's interest in fieldable, offline-capable
-    robotic AI.
-\end{itemize}
-
-\subsection{iHub for Human-Computer Interaction (HCI iHub)}
-
-The Husky-Mandi AMR creates a tangible HCI research opportunity in the context of
-\textit{human-robot interaction in shared campus spaces}:
-
-\begin{itemize}
-    \item \textbf{Pedestrian interaction design:} How should an AMR signal its intent to
-    pedestrians on a narrow campus pathway? LED communicators, audio tones, and projected
-    path indicators are open HCI research questions the platform can directly evaluate.
-
-    \item \textbf{Remote monitoring UX:} A web-based operator dashboard (ROS\,2 Foxglove
-    Bridge) provides a real-time telemetry interface whose usability can be evaluated through
-    HCI user studies with students and campus operations staff.
-
-    \item \textbf{Accessibility considerations:} Campus delivery automation for mobility-
-    impaired students represents an intersection of assistive technology and autonomous
-    robotics that fits squarely within HCI iHub's socially-directed research agenda.
-\end{itemize}
-
-\subsection{IIT Mandi Catalyst Technology Business Incubator}
-
-Beyond academic research, Project Husky-Mandi is structured with a deliberate commercialisation
-pathway through the Catalyst incubator programme:
-
-\begin{itemize}
-    \item \textbf{Productisation pathway:} A validated campus-deployment AMR platform with
-    documented performance data on steep Himalayan terrain constitutes a defensible market
-    entry point for last-mile autonomous delivery in hill-station urban environments (Shimla,
-    Manali, Dharamshala, Mussoorie) — a segment not addressed by existing AMR vendors whose
-    platforms are exclusively validated on flat urban terrain.
-
-    \item \textbf{Technology licensing:} The EKF mountain-GNSS localisation stack and
-    terrain-adaptive navigation layer can be packaged as a licensable ROS\,2 software module
-    for other robotics startups operating in GNSS-challenged environments (mining, forestry,
-    disaster response).
-
-    \item \textbf{Government and defence applications:} India's strategic interest in
-    autonomous logistics in mountain terrain (DRDO, BRO border logistics) creates a
-    well-funded customer pipeline for a rugged Himalayan-validated AMR platform — a pathway
-    directly accessible through IIT Mandi's defence research partnerships.
+    \item \textbf{Depth camera / 3D perception} -- not needed for marker-following on a
+    fixed route.
+    \item \textbf{GPS/RTK} -- not needed for the same reason, and was never needed even
+    in the original full-scale idea.
+    \item \textbf{Per-wheel motor drivers} -- one driver with paired channels is enough
+    for v1; can revisit if I want real torque vectoring later.
+    \item \textbf{LiFePO$_4$ battery} -- a basic lead-acid battery is heavier and less
+    efficient but much cheaper and something the club may already have lying around.
+    \item \textbf{Wireless e-stop} -- relying on a physical switch for now.
 \end{itemize}
 
 % ============================================================
-%  SECTION 7: CONCLUSION
+%  SECTION 8: WHY THIS FITS
+% ============================================================
+\section{Why I Think This Fits the Club}
+
+I know this is a much smaller and less impressive-sounding project than something with a
+Jetson and a depth camera, but I think that's actually the point for a first-year
+project -- I want to build something I can fully understand and debug myself, on a budget
+that doesn't need special approval, using a driver (the iMD16) that the club already has
+sitting around. If it works, scaling it up later with a better camera, more drivers, or a
+move to ROS\,2 seems like a natural next step instead of something I have to get right on
+day one.
+
+% ============================================================
+%  SECTION 9: CONCLUSION
 % ============================================================
 \section{Conclusion}
 
-This report has delivered four substantive contributions:
+To sum up what's in this report:
 
 \begin{enumerate}
-    \item A \textbf{formal electromechanical model} of PMDC motor dynamics, producing
-    the steady-state torque--speed characteristic $T_m(\omega) = (K/R)V - (K^2/R)\omega$
-    and its derived stall torque and no-load speed expressions.
-
-    \item A \textbf{complete hardware evaluation} of the Cytron iMD16, including a
-    mathematical power-scaling boundary analysis that rigorously proves its incompatibility
-    with passenger electric vehicles while confirming its suitability for campus-scale
-    brushed DC AMR drivetrains.
-
-    \item A \textbf{competitive technology review} identifying Cytron MDDS30, Maxon ESCON
-    50/5, and Roboteq SBL2360 as superior alternatives for higher-specification robotic
-    applications, with clear selection guidance for each use-case tier.
-
-    \item A \textbf{fully-specified project proposal} for Project Husky-Mandi AMR, presenting
-    a production-credible system architecture — iMD16 skid-steer drive, Jetson Orin Nano,
-    OAK-D Pro YOLOv8, ZED-F9P multi-band GNSS, 9-axis IMU EKF fusion, and 433\,MHz
-    hardware E-Stop — specifically engineered for the demanding terrain and GNSS-occluded
-    environment of IIT Mandi campus.
+    \item Worked through the basic DC motor equations (Eqs.~\eqref{eq:kvl}--\eqref{eq:tm_omega})
+    to actually understand what the driver is doing instead of treating it as a black box.
+    \item Went through the Cytron iMD16 spec sheet and figured out where it fits (good for
+    a small 12--24\,V robot, way too small for anything vehicle-scale).
+    \item Looked at a couple of cheaper/pricier alternatives for context (L298N, BTS7960,
+    MDDS30).
+    \item Worked out the skid-steer kinematics (Eqs.~\eqref{eq:fwd}--\eqref{eq:inv}) needed
+    to convert a forward-speed/turn-rate command into wheel PWM values.
+    \item Put together a stripped-down, budget version of the original delivery-robot idea:
+    Raspberry Pi instead of Jetson, a regular webcam instead of a depth camera, one iMD16
+    instead of four, and ArUco markers instead of GPS -- bringing the total cost down from
+    about Rs.\,1.75\,lakh to under Rs.\,18{,}000.
 \end{enumerate}
-
-The project is positioned to generate high-impact research publications, contribute to the
-CAIR and HCI iHub research mandates, and establish a commercialisation trajectory through
-the Catalyst incubator for Himalayan-terrain autonomous delivery robotics.
 
 \vspace{1.5em}
 \begin{center}
 {\color{iitmBlue}\rule{0.6\linewidth}{1pt}}\\[0.5em]
-\textit{Submitted with confidence for the Tech Lead role at IIT Mandi.}\\[0.3em]
+\textit{Submitted to the Robotronics Club for review -- heppy to get feedback and revise.}\\[0.3em]
 {\color{iitmGold}\rule{0.6\linewidth}{0.5pt}}
 \end{center}
 
